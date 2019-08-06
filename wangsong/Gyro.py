@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-CSV_FILE_PATH = './butterfly1.csv'
+CSV_FILE_PATH = './wangsong/butterfly1.csv'
 x = pd.read_csv(CSV_FILE_PATH, usecols=[6])
 plt.subplot(331)
 plt.plot(x[20000:21000],  'r')
