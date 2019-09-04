@@ -1,1 +1,9 @@
 .vscode/launch.json
+.idea/workspace.xml
+.idea/LPMS-B2.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+Project/__pycache__/filter.cpython-37.pyc
+Project/__pycache__/__init__.cpython-37.pyc
+Project/__pycache__/show_plot.cpython-37.pyc
