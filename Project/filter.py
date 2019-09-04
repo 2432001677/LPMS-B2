@@ -1,4 +1,4 @@
-from project import butter
+from scipy.signal import butter
 
 
 def get_normal_cut_fs(freq_cut, freq):  # 归一化截止频率
