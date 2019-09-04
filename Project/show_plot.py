@@ -1,5 +1,6 @@
-from project import plt
+from . import plt
 
+import sys
 
 def show(y, freq_cut, order):
     start = i = 0

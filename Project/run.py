@@ -1,6 +1,7 @@
-from project.filter import butter_low_pass
-from project.show_plot import show
-from project import filtfilt, np
+from Project.filter import butter_low_pass
+from Project.show_plot import show
+from Project import filtfilt, np
+# from scipy.signal import  filtfilt
 
 
 def main():
@@ -22,3 +23,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
