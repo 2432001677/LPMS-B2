@@ -1,6 +1,7 @@
 from Project.filter import butter_low_pass
 from Project.show_plot import show
 from Project import filtfilt, np
+from Project.statistics import data_sta
 
 
 def main():
@@ -18,7 +19,7 @@ def main():
     # y = lfilter(b, a, data)  # 有偏移量
     y = [filtfilt(b, a, data_x), filtfilt(b, a, data_y), filtfilt(b, a, data_z)]  # 无偏移量
     show(y, freq_cut, order)
-
+    data_sta(y)
 
 if __name__ == '__main__':
     main()
