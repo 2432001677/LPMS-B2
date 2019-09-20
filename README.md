@@ -8,3 +8,7 @@
 
 ## 三:
 >项目文件暂存在文件夹Project中  <Br/>
+
+导入 git pull
+提交 git commit -m "xx"
+上传 git push
