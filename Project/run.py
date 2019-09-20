@@ -1,8 +1,11 @@
 from Project.filter import Filter
-from Project.show_plot import show
+from Project.generate_images import generate_images
 from Project import lfilter, filtfilt, np
 from Project.statistics import data_sta
 from Project.readfile import Data
+from Project.swim import Swim
+
+from Project import plt
 
 
 def main():
@@ -21,8 +24,32 @@ def main():
     # y = lfilter(b, a, data)  # 有偏移量
     y = [filtfilt(b, a, data_x), filtfilt(b, a, data_y), filtfilt(b, a, data_z)]  # 无偏移量的处理后的数据列表
 
-    show(y, freq_cut, order)
-    data_sta(y)
+    # generate_images(y, freq_cut, order,file)
+    # data_sta(y)
+
+    # butterfly=Swim()
+    # butterfly.gyro=y
+    print(np.min(y[0][23700:23900]),end=' ')
+    print(np.argmin(y[0][23700:23900])+23700)
+    print(np.max(y[1][23700:23900]),end=' ')
+    print(np.argmax(y[1][23700:23900])+23700)
+    print(np.max(y[2][23700:23900]),end=' ')
+    print(np.argmax(y[2][23700:23900])+23700)
+
+    limit=(-1500,2000)
+    plt.subplot(311)
+    plt.plot(y[0][23700:23900])
+    plt.ylim(limit)
+    plt.grid()
+    plt.subplot(312)
+    plt.plot(y[1][23700:23900])
+    plt.ylim(limit)
+    plt.grid()
+    plt.subplot(313)
+    plt.plot(y[2][23700:23900])
+    plt.ylim(limit)
+    plt.grid()
+    plt.show()
 
 
 if __name__ == '__main__':
