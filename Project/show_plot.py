@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 from Project import plt, mkdir, exists
+=======
+from Project import plt
+from os.path import exists
+from os import mkdir
+>>>>>>> bc0d85cb0af4d9a1c9e7650809a78683ce0ac8e7
 
 
 def show(y, freq_cut, order):
