@@ -12,7 +12,7 @@ def main():
     order = 6  # 滤波器阶数
     fs = 400.0  # 采样率 hz
     freq_cut = 15  # 截止频率
-    filter = Filter(freq_cut, fs) # 新建一个滤波器
+    filter = Filter(freq_cut, fs)  # 新建一个滤波器
     b, a = filter.butter_low_pass(order)  # 生成一个分子b,分母a的低通滤波器
     # b, a = butter_band([10, 100], fs, order)
 
@@ -29,24 +29,27 @@ def main():
 
     # butterfly=Swim()
     # butterfly.gyro=y
-    print(np.min(y[0][23700:23900]),end=' ')
-    print(np.argmin(y[0][23700:23900])+23700)
-    print(np.max(y[1][23700:23900]),end=' ')
-    print(np.argmax(y[1][23700:23900])+23700)
-    print(np.max(y[2][23700:23900]),end=' ')
-    print(np.argmax(y[2][23700:23900])+23700)
 
-    limit=(-1500,2000)
+    start = 24500
+    end_add = 24700
+    print(np.min(y[0][start:end_add]), end=' ')
+    print(np.argmin(y[0][start:end_add]))
+    print(np.max(y[1][start:end_add]), end=' ')
+    print(np.argmax(y[1][start:end_add]))
+    print(np.max(y[2][start:end_add]), end=' ')
+    print(np.argmax(y[2][start:end_add]))
+
+    limit = (-1500, 2000)
     plt.subplot(311)
-    plt.plot(y[0][23700:23900])
+    plt.plot(y[0][start:end_add])
     plt.ylim(limit)
     plt.grid()
     plt.subplot(312)
-    plt.plot(y[1][23700:23900])
+    plt.plot(y[1][start:end_add])
     plt.ylim(limit)
     plt.grid()
     plt.subplot(313)
-    plt.plot(y[2][23700:23900])
+    plt.plot(y[2][start:end_add])
     plt.ylim(limit)
     plt.grid()
     plt.show()
