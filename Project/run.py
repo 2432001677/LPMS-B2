@@ -30,15 +30,15 @@ def main():
     # butterfly=Swim()
     # butterfly.gyro=y
 
-    start = 24500
-    end_add = 24700
-    print(np.min(y[0][start:end_add]), end=' ')
-    print(np.argmin(y[0][start:end_add]))
-    print(np.max(y[1][start:end_add]), end=' ')
-    print(np.argmax(y[1][start:end_add]))
-    print(np.max(y[2][start:end_add]), end=' ')
-    print(np.argmax(y[2][start:end_add]))
-
+    start = 20000
+    end_add = 25000
+    # print(np.min(y[0][start:end_add]), end=' ')
+    # print(np.argmin(y[0][start:end_add]))
+    # print(np.max(y[1][start:end_add]), end=' ')
+    # print(np.argmax(y[1][start:end_add]))
+    # print(np.max(y[2][start:end_add]), end=' ')
+    # print(np.argmax(y[2][start:end_add]))
+    # print(np.ptp(y[2][start:end_add]))
     limit = (-1500, 2000)
     plt.subplot(311)
     plt.plot(y[0][start:end_add])
@@ -53,6 +53,10 @@ def main():
     plt.ylim(limit)
     plt.grid()
     plt.show()
+    s = Swim()
+
+    list_z = s.get_frequency(y[2], start, end_add)
+
 
 
 if __name__ == '__main__':

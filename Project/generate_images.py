@@ -10,6 +10,7 @@ def generate_images(y, freq_cut, order, file):
     limit = (-1500, 2000)
 
     print("开始生成图片")
+
     while start < length:
         time = [x + start for x in range(plus)]
 
