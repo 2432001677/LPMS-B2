@@ -7,7 +7,7 @@ def generate_images(y, freq_cut, order, file):
     start = i = 0
     plus = 1000
     length = len(y[0]) - 1000
-    limit = (-1500, 2000)
+    limit = (-500, 500)
 
     print("开始生成图片")
     while start < length:
