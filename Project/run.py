@@ -29,29 +29,33 @@ def main():
     # butterfly=Swim()
     # butterfly.gyro=y
 
-    start = 24500
-    end_add = 24700
-    print(np.min(y[0][start:end_add]), end=' ')
-    print(np.argmin(y[0][start:end_add]))
-    print(np.max(y[1][start:end_add]), end=' ')
-    print(np.argmax(y[1][start:end_add]))
-    print(np.max(y[2][start:end_add]), end=' ')
-    print(np.argmax(y[2][start:end_add]))
+    start_time = 30000
+    end_time = 40000
+    # print(np.min(y[0][start_time:end_time]), end=' ')
+    # print(np.argmin(y[0][start:end_add]))
+    # print(np.max(y[1][start:end_add]), end=' ')
+    # print(np.argmax(y[1][start:end_add]))
+    # print(np.max(y[2][start:end_add]), end=' ')
+    # print(np.argmax(y[2][start:end_add]))
 
     limit = (-1500, 2000)
     plt.subplot(311)
-    plt.plot(y[0][start:end_add])
+    plt.plot(y[0][start_time:end_time])
     plt.ylim(limit)
     plt.grid()
     plt.subplot(312)
-    plt.plot(y[1][start:end_add])
+    plt.plot(y[1][start_time:end_time])
     plt.ylim(limit)
     plt.grid()
     plt.subplot(313)
-    plt.plot(y[2][start:end_add])
+    plt.plot(y[2][start_time:end_time])
     plt.ylim(limit)
     plt.grid()
     plt.show()
+    s = Swim()
+
+    list_z = s.get_frequency(y[2], start_time, end_time)
+    print(list_z)
 
 
 if __name__ == '__main__':
