@@ -12,3 +12,4 @@ Project/__pycache__/show_plot.cpython-37.pyc
 /.idea/inspectionProfiles/profiles_settings.xml
 *.pyc
 /imag/
+.idea/externalDependencies.xml

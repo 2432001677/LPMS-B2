@@ -4,7 +4,6 @@ from Project import lfilter, filtfilt, np
 from Project.statistics import data_sta
 from Project.readfile import Data
 from Project.swim import Swim
-
 from Project import plt
 
 
