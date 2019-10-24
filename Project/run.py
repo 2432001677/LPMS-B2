@@ -52,10 +52,7 @@ def main():
     plt.ylim(limit)
     plt.grid()
     plt.show()
-    s = Swim()
-
-    list_z = s.get_frequency(y[2], start_time, end_time)
-    print(list_z)
+    s = Swim(y[2], start_time, end_time)
 
 
 if __name__ == '__main__':
