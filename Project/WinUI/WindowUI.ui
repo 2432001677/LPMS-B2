@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListView" name="listView">
+   <widget class="QListView" name="listView_swims">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -63,37 +63,18 @@
      <string>退出</string>
     </property>
    </widget>
-   <widget class="QFrame" name="frame_detail">
+   <widget class="QTableView" name="tableView_detail">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
       <x>330</x>
       <y>20</y>
-      <width>581</width>
+      <width>331</width>
       <height>311</height>
      </rect>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QTableView" name="tableView_basic">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>331</width>
-       <height>311</height>
-      </rect>
-     </property>
-    </widget>
    </widget>
    <widget class="QFrame" name="frame_sum">
     <property name="enabled">
@@ -171,7 +152,7 @@
     </widget>
     <widget class="QLabel" name="label_calorie">
      <property name="enabled">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="geometry">
       <rect>

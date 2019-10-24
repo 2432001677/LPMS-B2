@@ -1,39 +1,46 @@
 import sys
 
-from PyQt5 import QtWidgets
-from scipy.signal import filtfilt
-
+from Project.WinUI.Controller import Files
 from Project.WinUI.WindowUI import Ui_MainWindow
-
 from PyQt5.QtWidgets import QMainWindow, QApplication
-
-from Project.filter import Filter
-from Project.readfile import Data
-from Project.swim import Swim
+from PyQt5 import QtWidgets, QtCore
 
 
 class MyWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MyWindow, self).__init__(parent)
         self.setupUi(self)
-        self.bt_quit.clicked.connect(QtWidgets.qApp.quit)
+        self.controller = Files()
+
+        self.refresh_list_swim_view()
+
+        self.listView_swims.clicked.connect(self.select_list_item)
         self.bt_summary.clicked.connect(self.change_to_summary)
         self.bt_detail.clicked.connect(self.change_to_detail)
-
-
-
+        self.bt_quit.clicked.connect(QtWidgets.qApp.quit)
 
     def retranslateUi(self, MainWindow):
         Ui_MainWindow.retranslateUi(self, MainWindow)
-        self.frame_detail.close()
+        self.tableView_detail.close()
+
+    def refresh_list_swim_view(self):
+        list_model = QtCore.QStringListModel(self.controller.swim_file_list)
+        self.listView_swims.setModel(list_model)
 
     def change_to_summary(self):
-        self.frame_detail.close()
+        self.tableView_detail.close()
         self.frame_sum.show()
 
     def change_to_detail(self):
         self.frame_sum.close()
-        self.frame_detail.show()
+        self.tableView_detail.show()
+
+    def select_list_item(self):
+        self.refresh_frame_sum()
+        pass
+
+    def refresh_frame_sum(self):
+        pass
 
 
 if __name__ == '__main__':
