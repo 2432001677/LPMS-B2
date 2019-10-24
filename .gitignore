@@ -13,3 +13,4 @@ Project/__pycache__/show_plot.cpython-37.pyc
 *.pyc
 /imag/
 .idea/externalDependencies.xml
+.DS_Store
