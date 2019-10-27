@@ -37,7 +37,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.frame_sum.close()
         self.tableView_detail.show()
 
-    def refresh(self, index):
+    def refresh(self):
         self.refresh_frame_sum()
         self.refresh_table_view()
 
@@ -51,10 +51,11 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         minute = self.controller.swim_list[pos.row()].all_time // 1000 // 60 % 60
         sec = self.controller.swim_list[pos.row()].all_time // 1000 % 60
         self.summary_time.setTime(QtCore.QTime(hour, minute, sec))
+        self.label_calorie_num.setText(str(round(self.controller.swim_list[pos.row()].all_time / 1000 * 0.8, 2)) + "千卡")
         try:
-            self.label_average_speed_num.setText(str(self.controller.swim_list[pos.row()].all_time / (
-                    self.controller.swim_list[pos.row()].number * self.controller.swim_list[pos.row()].arm_stroke)))
-        except Exception as e:
+            self.label_average_speed_num.setText(str(round(self.controller.swim_list[pos.row()].all_time / (
+                    self.controller.swim_list[pos.row()].number * self.controller.swim_list[pos.row()].arm_stroke), 2)))
+        except Exception:
             self.label_average_speed_num.setText("NAN")
 
 
