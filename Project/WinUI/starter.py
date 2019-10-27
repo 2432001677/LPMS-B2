@@ -11,10 +11,12 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         super(MyWindow, self).__init__(parent)
         self.setupUi(self)
         self.controller = Files()
+        self.summary_time.setDisplayFormat("HH:mm:ss")
 
         self.refresh_list_swim_view()
+        self.refresh_frame_sum()
 
-        self.listView_swims.clicked.connect(self.select_list_item)
+        self.listView_swims.clicked.connect(self.refresh)
         self.bt_summary.clicked.connect(self.change_to_summary)
         self.bt_detail.clicked.connect(self.change_to_detail)
         self.bt_quit.clicked.connect(QtWidgets.qApp.quit)
@@ -35,12 +37,25 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.frame_sum.close()
         self.tableView_detail.show()
 
-    def select_list_item(self):
+    def refresh(self, index):
         self.refresh_frame_sum()
+        self.refresh_table_view()
+
+    def refresh_table_view(self):
         pass
 
     def refresh_frame_sum(self):
-        pass
+        pos = self.listView_swims.currentIndex()
+        self.text_main_swim.setText(self.controller.swim_list[pos.row()].name)
+        hour = self.controller.swim_list[pos.row()].all_time // 1000 // 60 // 60
+        minute = self.controller.swim_list[pos.row()].all_time // 1000 // 60 % 60
+        sec = self.controller.swim_list[pos.row()].all_time // 1000 % 60
+        self.summary_time.setTime(QtCore.QTime(hour, minute, sec))
+        try:
+            self.label_average_speed_num.setText(str(self.controller.swim_list[pos.row()].all_time / (
+                    self.controller.swim_list[pos.row()].number * self.controller.swim_list[pos.row()].arm_stroke)))
+        except Exception as e:
+            self.label_average_speed_num.setText("NAN")
 
 
 if __name__ == '__main__':

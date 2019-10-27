@@ -27,9 +27,8 @@ class Files:
                 data_x = data.get_gyro()[0]
                 data_y = data.get_gyro()[1]
                 data_z = data.get_gyro()[2]
-                end_time = len(data_z)
                 y = [filtfilt(b, a, data_x), filtfilt(b, a, data_y), filtfilt(b, a, data_z)]  # 无偏移量的处理后的数据列表
-                self.swim_list.append(Swim(y[2], start_time, end_time))
+                self.swim_list.append(Swim(y[2]))
                 self.swim_file_list.append(i)
 
 

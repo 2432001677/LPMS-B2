@@ -100,8 +100,8 @@ def main():
     #     s.flag2 = 300
     #
     #     list_z=s.get_frequency(y[2], start_time, end_time)
-    list_z=s.get_frequency(y[2], start_time, end_time)
-    name = s.tst()
+    list_z=s.get_frequency( )
+    print(s.tst())
     s.print_inf()
     # print(free,butter,back,breast)
     print(list_z)
