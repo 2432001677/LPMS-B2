@@ -12,8 +12,7 @@ class Files:
         self.swim_list = []
         self.swim_file_list = []
 
-        start_time = 30000
-        end_time = 40000
+        start_time = 0
         order = 6  # 滤波器阶数
         fs = 400.0  # 采样率 hz
         freq_cut = 15  # 截止频率
@@ -28,11 +27,9 @@ class Files:
                 data_x = data.get_gyro()[0]
                 data_y = data.get_gyro()[1]
                 data_z = data.get_gyro()[2]
+                end_time = len(data_z)
                 y = [filtfilt(b, a, data_x), filtfilt(b, a, data_y), filtfilt(b, a, data_z)]  # 无偏移量的处理后的数据列表
-                try:
-                    self.swim_list.append(Swim(y[2], start_time, end_time))
-                except Exception as e:
-                    print(e)
+                self.swim_list.append(Swim(y[2], start_time, end_time))
                 self.swim_file_list.append(i)
 
 
