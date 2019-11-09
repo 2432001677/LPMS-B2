@@ -87,5 +87,5 @@ class Ui_MainWindow(object):
         self.table_summary_time.setText(_translate("MainWindow", "时间"))
         self.label_calorie.setText(_translate("MainWindow", "能量消耗"))
         self.label_calorie_num.setText(_translate("MainWindow", "8千卡"))
-        self.label_average_speed.setText(_translate("MainWindow", "平均配速"))
+        self.label_average_speed.setText(_translate("MainWindow", "平均配速(s/100m)"))
         self.label_average_speed_num.setText(_translate("MainWindow", "12\'\'"))

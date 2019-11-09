@@ -22,8 +22,13 @@ class Swim:
         self.example = []
         self.start_time = 0
         self.example = y
+        self.duration = 0  # 游泳时长/s(总时长)
+        self.avgepace = []  # 平均配速/10s
+        self.avgerate = []  # 平均频率/10s
         self.get_frequency()
         self.tst()
+
+
 
     # free/buffer 500 1000 500
     # back 600 700 400
@@ -32,6 +37,7 @@ class Swim:
     def get_frequency(self):
         start_time = self.start_time
         end_time = len(self.example)
+        self.duration = end_time/400
         max_time_interval = 1000
         all_time = 0
         arm_stroke = self.arm_stroke
@@ -106,6 +112,20 @@ class Swim:
                     if np.amax(self.example[
                                self.time_point_list[0]:self.time_point_list[len(self.time_point_list) - 1]]) < 700:
                         self.name = "breaststroke"
+        #print(self.time_point_list)
+        start = self.start_time
+        end = len(self.example)
+        while start < end:
+            n = 0
+            for t in self.time_point_list:
+                if start < t < (start + 4000):
+                    n += 1
+            self.avgerate.append(n)
+            if n == 0:
+                self.avgepace.append(0)
+            else:
+                self.avgepace.append(1000/(n*self.arm_stroke))
+            start += 4000
 
     def print_inf(self):
         print(self.number)  # 划臂次数
@@ -113,3 +133,5 @@ class Swim:
         print(self.once_time)  # 单词划臂时间
         print(self.pool)  # 游泳距离
         print(self.name)
+        print(self.avgerate)
+        print(self.avgepace)

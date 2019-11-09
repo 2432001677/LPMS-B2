@@ -53,7 +53,7 @@ def main():
 
     # plt.savefig("../1", dpi=1000)
     plt.show()
-    s = Swim()
+    s=Swim(y[2])
     #     flg = 5000
     # free=0
     # butter=0
@@ -100,11 +100,12 @@ def main():
     #     s.flag2 = 300
     #
     #     list_z=s.get_frequency(y[2], start_time, end_time)
-    list_z=s.get_frequency( )
-    print(s.tst())
+    #list_z=s.get_frequency( )
+    #s.tst()
+    #print(s.tst())
     s.print_inf()
     # print(free,butter,back,breast)
-    print(list_z)
+    #print(list_z)
     # print(np.ptp(y[2][26000:34000]))
     # print(np.amax(y[2][26000:34000]))
     # for i in list_z:

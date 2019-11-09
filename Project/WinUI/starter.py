@@ -70,7 +70,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.summary_time.setTime(QtCore.QTime(hour, minute, sec))
         self.label_calorie_num.setText(str(round(self.controller.swim_list[pos.row()].all_time / 1000 * 0.8, 2)) + "千卡")
         try:
-            self.label_average_speed_num.setText(str(round(self.controller.swim_list[pos.row()].all_time / (
+            self.label_average_speed_num.setText(str(round(self.controller.swim_list[pos.row()].duration * 100 / (
                     self.controller.swim_list[pos.row()].number * self.controller.swim_list[pos.row()].arm_stroke), 2)))
         except Exception:
             self.label_average_speed_num.setText("NAN")
