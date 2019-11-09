@@ -1,4 +1,7 @@
 from Project import np
+from Project import sys
+
+sys.setrecursionlimit(1000000)
 
 
 class Swim:
@@ -20,6 +23,7 @@ class Swim:
         self.start_time = 0
         self.example = y
         self.get_frequency()
+        self.tst()
 
     # free/buffer 500 1000 500
     # back 600 700 400
@@ -39,16 +43,20 @@ class Swim:
         sum_distance = end_time - self.start_time
         time_point_list = self.time_point_list
         while start_time < end_time - time_frame_interval:
-            x = np.ptp(self.example[start_time:start_time + time_frame_interval])
+            a=np.array(self.example[start_time:start_time + time_frame_interval])
+            x = np.ptp(a)
             if x > flag:
                 max_value = np.amax(self.example[start_time:start_time + time_frame_interval])
                 for i in range(time_frame_interval):
                     if self.example[start_time + i] == max_value and self.example[start_time + i] > flag2:
                         time_point_list.append(start_time + i)
+                        break
 
                 start_time += time_frame_interval
                 while self.example[start_time] > flag2:
                     start_time += increment_time_frame
+                    if start_time>end_time:
+                        break
             else:
                 start_time += increment_time_frame
 
@@ -65,7 +73,6 @@ class Swim:
         #         break
         # self.time_point_list.clear()
         self.time_point_list = time_point_list
-        self.tst()
 
         return time_point_list
 
@@ -83,6 +90,7 @@ class Swim:
             self.flag = 700
             self.flag2 = 400
             self.time_point_list.clear()
+
             self.get_frequency()
             if len(self.time_point_list) > 5:
                 if np.amax(self.example[
