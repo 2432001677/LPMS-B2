@@ -13,9 +13,18 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1098, 394)
+        MainWindow.resize(1098, 994)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+
+        self.label_main_image= QtWidgets.QLabel(self.centralwidget)
+        self.label_main_image.setGeometry(QtCore.QRect(20, 350, 1000, 600))
+        self.label_main_image.setObjectName("label_main_image")
+
+        self.pixmap=QtGui.QPixmap("")
+        # self.label_main_image.setStyleSheet()
+        self.label_main_image.setScaledContents(True)
+
         self.listView_swims = QtWidgets.QListView(self.centralwidget)
         self.listView_swims.setGeometry(QtCore.QRect(20, 20, 281, 311))
         self.listView_swims.setObjectName("listView_swims")
@@ -30,11 +39,11 @@ class Ui_MainWindow(object):
         self.bt_quit.setObjectName("bt_quit")
         self.tableView_detail = QtWidgets.QTableView(self.centralwidget)
         self.tableView_detail.setEnabled(True)
-        self.tableView_detail.setGeometry(QtCore.QRect(330, 20, 331, 311))
+        self.tableView_detail.setGeometry(QtCore.QRect(280, 0, 350, 450))
         self.tableView_detail.setObjectName("tableView_detail")
         self.frame_sum = QtWidgets.QFrame(self.centralwidget)
         self.frame_sum.setEnabled(True)
-        self.frame_sum.setGeometry(QtCore.QRect(330, 20, 581, 311))
+        self.frame_sum.setGeometry(QtCore.QRect(330, 20, 581, 211))
         self.frame_sum.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_sum.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_sum.setObjectName("frame_sum")
@@ -59,7 +68,7 @@ class Ui_MainWindow(object):
         self.label_calorie_num.setGeometry(QtCore.QRect(310, 90, 81, 41))
         self.label_calorie_num.setObjectName("label_calorie_num")
         self.label_average_speed = QtWidgets.QLabel(self.frame_sum)
-        self.label_average_speed.setGeometry(QtCore.QRect(450, 30, 81, 41))
+        self.label_average_speed.setGeometry(QtCore.QRect(450, 30, 100, 41))
         self.label_average_speed.setObjectName("label_average_speed")
         self.label_average_speed_num = QtWidgets.QLabel(self.frame_sum)
         self.label_average_speed_num.setGeometry(QtCore.QRect(450, 90, 81, 41))

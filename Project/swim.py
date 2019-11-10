@@ -24,11 +24,13 @@ class Swim:
         self.example = y
         self.duration = 0  # 游泳时长/s(总时长)
         self.avgepace = []  # 平均配速/10s
+        self.averagepace=0
+        self.maxpace = 0
         self.avgerate = []  # 平均频率/10s
+        self.averagerate=0
+        self.maxrate = 0
         self.get_frequency()
         self.tst()
-
-
 
     # free/buffer 500 1000 500
     # back 600 700 400
@@ -37,7 +39,7 @@ class Swim:
     def get_frequency(self):
         start_time = self.start_time
         end_time = len(self.example)
-        self.duration = end_time/400
+        self.duration = end_time / 400
         max_time_interval = 1000
         all_time = 0
         arm_stroke = self.arm_stroke
@@ -49,7 +51,7 @@ class Swim:
         sum_distance = end_time - self.start_time
         time_point_list = self.time_point_list
         while start_time < end_time - time_frame_interval:
-            a=np.array(self.example[start_time:start_time + time_frame_interval])
+            a = np.array(self.example[start_time:start_time + time_frame_interval])
             x = np.ptp(a)
             if x > flag:
                 max_value = np.amax(self.example[start_time:start_time + time_frame_interval])
@@ -61,7 +63,7 @@ class Swim:
                 start_time += time_frame_interval
                 while self.example[start_time] > flag2:
                     start_time += increment_time_frame
-                    if start_time>end_time:
+                    if start_time > end_time:
                         break
             else:
                 start_time += increment_time_frame
@@ -112,7 +114,7 @@ class Swim:
                     if np.amax(self.example[
                                self.time_point_list[0]:self.time_point_list[len(self.time_point_list) - 1]]) < 700:
                         self.name = "breaststroke"
-        #print(self.time_point_list)
+        # print(self.time_point_list)
         start = self.start_time
         end = len(self.example)
         while start < end:
@@ -124,14 +126,19 @@ class Swim:
             if n == 0:
                 self.avgepace.append(0)
             else:
-                self.avgepace.append(1000/(n*self.arm_stroke))
+                self.avgepace.append(1000 / (n * self.arm_stroke))
             start += 4000
+        self.averagepace=np.mean(self.avgepace)
+        self.maxpace = np.amax(self.avgepace)
+        self.averagerate=np.mean(self.avgerate)
+        self.maxrate = np.amax(self.avgerate)
 
     def print_inf(self):
-        print(self.number)  # 划臂次数
-        print(self.all_time)  # 总时间
+        # print(self.number)  # 划臂次数
+        # print(self.all_time)  # 总时间
         print(self.once_time)  # 单词划臂时间
-        print(self.pool)  # 游泳距离
-        print(self.name)
-        print(self.avgerate)
-        print(self.avgepace)
+        # print(self.pool)  # 游泳距离
+        # print(self.name)
+        # print(self.avgerate)
+        # print(self.avgepace)
+        print(self.maxpace)
