@@ -4,6 +4,7 @@ from Project import lfilter, filtfilt, np
 from Project.statistics import data_sta
 from Project.readfile import Data
 from Project.swim import Swim
+from Project.database import DbControl
 from Project import plt
 
 
@@ -110,6 +111,8 @@ def main():
     # print(np.amax(y[2][26000:34000]))
     # for i in list_z:
     #     print(y[2][i])
+    db=DbControl(s)
+    db.insert()
 
 if __name__ == '__main__':
     main()

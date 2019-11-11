@@ -1,5 +1,6 @@
 from Project import np
 from Project import sys
+from Project import time
 
 sys.setrecursionlimit(1000000)
 
@@ -31,6 +32,7 @@ class Swim:
         self.maxrate = 0
         self.get_frequency()
         self.tst()
+        self.date
 
     # free/buffer 500 1000 500
     # back 600 700 400
@@ -132,6 +134,7 @@ class Swim:
         self.maxpace = np.amax(self.avgepace)
         self.averagerate=np.mean(self.avgerate)
         self.maxrate = np.amax(self.avgerate)
+        self.date=time.strftime("%Y/%m/%d %H:%M:%S",time.localtime())
 
     def print_inf(self):
         # print(self.number)  # 划臂次数
